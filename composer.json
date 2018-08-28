@@ -1,0 +1,22 @@
+{
+  "name": "rem42/scraper-google-play",
+  "description": "API Google Play Scraper",
+  "authors": [
+    {
+      "name": "rem42",
+      "email": "me@remy.ovh"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.9",
+    "doctrine/common": "^2.8",
+    "symfony/dom-crawler": "^3.0",
+    "jms/serializer-bundle": "^2.0",
+    "rem42/scraper": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Scraper\\ScraperGooglePlay\\": ""
+    }
+  }
+}
