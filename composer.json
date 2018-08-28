@@ -1,6 +1,7 @@
 {
   "name": "rem42/scraper-google-play",
   "description": "API Google Play Scraper",
+  "license": "MIT",
   "authors": [
     {
       "name": "rem42",
