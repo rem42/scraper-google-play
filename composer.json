@@ -5,19 +5,34 @@
   "authors": [
     {
       "name": "rem42",
-      "email": "me@remy.ovh"
+      "email": "me@remy.ovh",
+      "homepage": "https://remy.ovh"
     }
   ],
   "require": {
-    "php": ">=5.5.9",
-    "doctrine/common": "^2.8",
-    "symfony/dom-crawler": "^3.0",
-    "jms/serializer-bundle": "^2.0",
-    "rem42/scraper": "^1.0"
+    "php": "^7.4",
+    "rem42/scraper": "2.*",
+    "symfony/dom-crawler": "^5.0",
+    "symfony/css-selector": "^5.0"
+  },
+  "require-dev": {
+    "rem42/php-cs-fixer-config": "^1.0",
+    "phpstan/phpstan": "0.12.*"
   },
   "autoload": {
+    "psr-0": {
+      "Scraper\\ScraperGooglePlay\\": "src/"
+    },
     "psr-4": {
-      "Scraper\\ScraperGooglePlay\\": ""
+      "Scraper\\ScraperGooglePlay\\": "src/"
     }
+  },
+  "config": {
+    "bin-dir": "bin/"
+  },
+  "scripts": {
+    "static-analysis": "./bin/phpstan analyse src --level=max --no-progress -vvv",
+    "code-style-check": "./bin/php-cs-fixer fix --dry-run --verbose",
+    "code-style-fix": "./bin/php-cs-fixer fix"
   }
 }
