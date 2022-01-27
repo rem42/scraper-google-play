@@ -5,48 +5,36 @@ namespace Scraper\ScraperGooglePlay\Entity;
 /**
  * Class GooglePlayPermissions
  */
-class GooglePlayPermissions
+final class GooglePlayPermissions
 {
-    /** @var string */
-    protected $title;
+    protected string $title;
 
-    /** @var string */
-    protected $description;
+    protected string $description;
 
-    /**
-     * @return string
-     */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
 
     /**
-     * @param string $title
-     *
      * @return $this
      */
-    public function setTitle($title)
+    public function setTitle(string $title): self
     {
         $this->title = $title;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
 
     /**
-     * @param string $description
-     *
      * @return $this
      */
-    public function setDescription($description)
+    public function setDescription(string $description): self
     {
         $this->description = $description;
 

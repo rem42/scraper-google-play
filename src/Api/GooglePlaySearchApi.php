@@ -4,7 +4,7 @@ namespace Scraper\ScraperGooglePlay\Api;
 
 use Scraper\Scraper\Api\AbstractApi;
 
-class GooglePlaySearchApi extends AbstractApi
+final class GooglePlaySearchApi extends AbstractApi
 {
     public function execute(): array
     {
@@ -16,7 +16,5 @@ class GooglePlaySearchApi extends AbstractApi
 
         dump($content);
         die('');
-
-        return [];
     }
 }

@@ -5,25 +5,19 @@ namespace Scraper\ScraperGooglePlay\Entity;
 /**
  * Class GooglePlayAppSearch
  */
-class GooglePlayAppSearch extends GooglePlayObject
+final class GooglePlayAppSearch extends GooglePlayObject
 {
-    /** @var string */
-    protected $developer;
+    protected string $developer;
 
-    /**
-     * @return string
-     */
-    public function getDeveloper()
+    public function getDeveloper(): string
     {
         return $this->developer;
     }
 
     /**
-     * @param string $developer
-     *
      * @return $this
      */
-    public function setDeveloper($developer)
+    public function setDeveloper(string $developer): self
     {
         $this->developer = $developer;
 

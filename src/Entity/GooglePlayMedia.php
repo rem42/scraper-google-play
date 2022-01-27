@@ -2,7 +2,7 @@
 
 namespace Scraper\ScraperGooglePlay\Entity;
 
-class GooglePlayMedia
+final class GooglePlayMedia
 {
     public string $id;
     public string $url;

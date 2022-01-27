@@ -2,7 +2,10 @@
 
 namespace Scraper\ScraperGooglePlay\Entity;
 
-class GooglePlayApplication extends GooglePlayObject
+final class GooglePlayApplication extends GooglePlayObject
 {
     public GooglePlayDeveloper $developer;
+    public GooglePlayCategory $category;
+    public string $downloadRange;
+    public int $download;
 }

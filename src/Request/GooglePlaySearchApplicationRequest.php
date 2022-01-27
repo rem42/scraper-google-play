@@ -9,12 +9,15 @@ use Scraper\Scraper\Request\RequestQuery;
 /**
  * @Scraper(path="_/PlayStoreUi/data/batchexecute", method="POST")
  */
-class GooglePlaySearchApplicationRequest extends GooglePlayRequest implements RequestQuery, RequestBody
+final class GooglePlaySearchApplicationRequest extends GooglePlayRequest implements RequestQuery, RequestBody
 {
     protected string $queryString;
     protected string $language = 'en';
-    protected ?int $price      = null;
+    protected ?int $price;
 
+    /**
+     * @return string[]
+     */
     public function getQuery(): array
     {
         return [
@@ -22,6 +25,9 @@ class GooglePlaySearchApplicationRequest extends GooglePlayRequest implements Re
         ];
     }
 
+    /**
+     * @return string[]
+     */
     public function getBody(): array
     {
         return [
@@ -43,7 +49,7 @@ class GooglePlaySearchApplicationRequest extends GooglePlayRequest implements Re
         return $this;
     }
 
-    public function setPrice($price): self
+    public function setPrice(?int $price): self
     {
         $this->price = $price;
 

@@ -5,9 +5,13 @@ namespace Scraper\ScraperGooglePlay\Api;
 use Scraper\Scraper\Api\AbstractApi;
 use Scraper\ScraperGooglePlay\Entity\GooglePlayApplication;
 use Scraper\ScraperGooglePlay\Entity\GooglePlayDeveloper;
+use Scraper\ScraperGooglePlay\Utils\Price;
 
-class GooglePlaySearchApplicationApi extends AbstractApi
+final class GooglePlaySearchApplicationApi extends AbstractApi
 {
+    /**
+     * @return GooglePlayApplication[]
+     */
     public function execute(): array
     {
         $content = $this->response->getContent();
@@ -27,7 +31,7 @@ class GooglePlaySearchApplicationApi extends AbstractApi
             $a->name        = $app[2];
             $a->cover       = $app[1][1][0][3][2];
             $a->description = $app[4][1][1][1][1];
-            $a->type        = GooglePlayApplication::FREE;
+            $a->type        = Price::FREE;
             $a->link        = $app[9][4][2];
             $a->rating      = $app[6][0][2][1][0];
             $a->ratingFloat = $app[6][0][2][1][1];
@@ -39,7 +43,7 @@ class GooglePlaySearchApplicationApi extends AbstractApi
             $a->developer = $d;
 
             if (null !== $app[7] && count($app[7])) {
-                $a->type           = GooglePlayApplication::PAID;
+                $a->type           = Price::PAID;
                 $a->price          = $app[7][0][3][2][1][0][0];
                 $a->priceFormatted = $app[7][0][3][2][1][0][2];
                 $a->currency       = $app[7][0][3][2][1][0][1];

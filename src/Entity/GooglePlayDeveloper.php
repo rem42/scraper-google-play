@@ -2,7 +2,7 @@
 
 namespace Scraper\ScraperGooglePlay\Entity;
 
-class GooglePlayDeveloper
+final class GooglePlayDeveloper
 {
     public string $name;
     public string $mail;

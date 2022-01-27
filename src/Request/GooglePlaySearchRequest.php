@@ -9,11 +9,14 @@ use Scraper\Scraper\Request\RequestQuery;
 /**
  * @Scraper(path="_/PlayStoreUi/data/batchexecute", method="POST")
  */
-class GooglePlaySearchRequest extends GooglePlayRequest implements RequestQuery, RequestBody
+final class GooglePlaySearchRequest extends GooglePlayRequest implements RequestQuery, RequestBody
 {
     protected string $queryString;
     protected string $language = 'en';
 
+    /**
+     * @return string[]
+     */
     public function getQuery(): array
     {
         return [
@@ -21,6 +24,9 @@ class GooglePlaySearchRequest extends GooglePlayRequest implements RequestQuery,
         ];
     }
 
+    /**
+     * @return string[]
+     */
     public function getBody(): array
     {
         return [

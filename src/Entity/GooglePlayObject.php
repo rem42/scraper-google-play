@@ -4,11 +4,9 @@ namespace Scraper\ScraperGooglePlay\Entity;
 
 abstract class GooglePlayObject
 {
-    const FREE = 'free';
-    const PAID = 'paid';
-
     public string $packageName;
     public string $name;
+    public string $releaseDate;
     public string $cover;
     public string $landscape;
     public string $description;

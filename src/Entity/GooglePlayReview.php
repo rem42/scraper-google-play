@@ -5,27 +5,19 @@ namespace Scraper\ScraperGooglePlay\Entity;
 /**
  * Class GooglePlayReview
  */
-class GooglePlayReview
+final class GooglePlayReview
 {
     protected $idReview;
-    /** @var string */
-    protected $idUser;
-    /** @var string */
-    protected $name;
-    /** @var string */
-    protected $picture;
-    /** @var string */
-    protected $surname;
+    protected ?string $idUser;
+    protected ?string $name;
+    protected ?string $picture;
+    protected ?string $surname;
     /** @var \DateTime|string */
     protected $dateTime;
-    /** @var string */
-    protected $link;
-    /** @var string */
-    protected $review;
-    /** @var int */
-    protected $note;
-    /** @var string */
-    protected $noteText;
+    protected ?string $link;
+    protected ?string $review;
+    protected ?int $note;
+    protected ?string $noteText;
 
     public function getIdReview()
     {
@@ -35,15 +27,12 @@ class GooglePlayReview
     /**
      * @return $this
      */
-    public function setIdReview($idReview)
+    public function setIdReview($idReview): self
     {
         $this->idReview = $idReview;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getIdUser(): ?string
     {
         return $this->idUser;
@@ -54,15 +43,12 @@ class GooglePlayReview
      *
      * @return $this
      */
-    public function setIdUser(?string $idUser)
+    public function setIdUser(?string $idUser): self
     {
         $this->idUser = $idUser;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): ?string
     {
         return $this->name;
@@ -73,15 +59,12 @@ class GooglePlayReview
      *
      * @return $this
      */
-    public function setName(?string $name)
+    public function setName(?string $name): self
     {
         $this->name = $name;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getPicture(): ?string
     {
         return $this->picture;
@@ -92,15 +75,12 @@ class GooglePlayReview
      *
      * @return $this
      */
-    public function setPicture(?string $picture)
+    public function setPicture(?string $picture): self
     {
         $this->picture = $picture;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getSurname(): ?string
     {
         return $this->surname;
@@ -111,7 +91,7 @@ class GooglePlayReview
      *
      * @return $this
      */
-    public function setSurname(?string $surname)
+    public function setSurname(?string $surname): self
     {
         $this->surname = $surname;
         return $this;
@@ -130,15 +110,12 @@ class GooglePlayReview
      *
      * @return $this
      */
-    public function setDateTime($dateTime)
+    public function setDateTime($dateTime): self
     {
         $this->dateTime = $dateTime;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getLink(): ?string
     {
         return $this->link;
@@ -149,15 +126,12 @@ class GooglePlayReview
      *
      * @return $this
      */
-    public function setLink(?string $link)
+    public function setLink(?string $link): self
     {
         $this->link = $link;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getReview(): ?string
     {
         return $this->review;
@@ -168,15 +142,12 @@ class GooglePlayReview
      *
      * @return $this
      */
-    public function setReview(?string $review)
+    public function setReview(?string $review): self
     {
         $this->review = $review;
         return $this;
     }
 
-    /**
-     * @return int
-     */
     public function getNote(): ?int
     {
         return $this->note;
@@ -187,15 +158,12 @@ class GooglePlayReview
      *
      * @return $this
      */
-    public function setNote(?int $note)
+    public function setNote(?int $note): self
     {
         $this->note = $note;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getNoteText(): ?string
     {
         return $this->noteText;
@@ -206,7 +174,7 @@ class GooglePlayReview
      *
      * @return $this
      */
-    public function setNoteText(?string $noteText)
+    public function setNoteText(?string $noteText): self
     {
         $this->noteText = $noteText;
         return $this;

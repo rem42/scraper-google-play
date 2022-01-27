@@ -5,71 +5,53 @@ namespace Scraper\ScraperGooglePlay\Entity;
 /**
  * Class GooglePlayImage
  */
-class GooglePlayImage
+final class GooglePlayImage
 {
-    /** @var string */
-    protected $url;
+    protected string $url;
 
-    /** @var int */
-    protected $width;
+    protected int $width;
 
-    /** @var int */
-    protected $height;
+    protected int $height;
 
-    /**
-     * @return string
-     */
-    public function getUrl()
+    public function getUrl(): string
     {
         return $this->url;
     }
 
     /**
-     * @param string $url
-     *
      * @return $this
      */
-    public function setUrl($url)
+    public function setUrl(string $url): self
     {
         $this->url = $url;
 
         return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getWidth()
+    public function getWidth(): int
     {
         return $this->width;
     }
 
     /**
-     * @param int $width
-     *
      * @return $this
      */
-    public function setWidth($width)
+    public function setWidth(int $width): self
     {
         $this->width = $width;
 
         return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getHeight()
+    public function getHeight(): int
     {
         return $this->height;
     }
 
     /**
-     * @param int $height
-     *
      * @return $this
      */
-    public function setHeight($height)
+    public function setHeight(int $height): self
     {
         $this->height = $height;
 
