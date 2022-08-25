@@ -1,11 +1,9 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperGooglePlay\Utils;
 
 final class Price
 {
-    /** @var int */
-    const FREE = 1;
-    /** @var int */
-    const PAID = 2;
+    public static int $FREE = 1;
+    public static int $PAID = 2;
 }

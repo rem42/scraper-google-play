@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperGooglePlay\Entity;
 
@@ -14,7 +14,7 @@ abstract class GooglePlayObject
     /** @var array<GooglePlayMedia> */
     public array $imgs = [];
     public GooglePlayMedia $video;
-    public string $type;
+    public int $type;
     public string $link;
     public string $rating;
     public float $ratingFloat;

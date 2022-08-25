@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperGooglePlay\Entity;
 
@@ -7,17 +7,17 @@ namespace Scraper\ScraperGooglePlay\Entity;
  */
 final class GooglePlayReview
 {
-    protected $idReview;
-    protected ?string $idUser;
-    protected ?string $name;
-    protected ?string $picture;
-    protected ?string $surname;
+    private $idReview;
+    private ?string $idUser;
+    private ?string $name;
+    private ?string $picture;
+    private ?string $surname;
     /** @var \DateTime|string */
-    protected $dateTime;
-    protected ?string $link;
-    protected ?string $review;
-    protected ?int $note;
-    protected ?string $noteText;
+    private $dateTime;
+    private ?string $link;
+    private ?string $review;
+    private ?int $note;
+    private ?string $noteText;
 
     public function getIdReview()
     {

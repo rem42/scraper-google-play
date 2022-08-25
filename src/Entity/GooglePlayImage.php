@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperGooglePlay\Entity;
 
@@ -7,11 +7,11 @@ namespace Scraper\ScraperGooglePlay\Entity;
  */
 final class GooglePlayImage
 {
-    protected string $url;
+    private string $url;
 
-    protected int $width;
+    private int $width;
 
-    protected int $height;
+    private int $height;
 
     public function getUrl(): string
     {

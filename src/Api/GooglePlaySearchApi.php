@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperGooglePlay\Api;
 
@@ -15,6 +15,6 @@ final class GooglePlaySearchApi extends AbstractApi
         $content = json_decode($content[0][2]);
 
         dump($content);
-        die('');
+        exit('');
     }
 }

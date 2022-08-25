@@ -2,8 +2,8 @@
 
 namespace Scraper\ScraperGooglePlay\Entity;
 
-final class GooglePlayPegi
+class GooglePlayCategory
 {
     public string $name;
-    public GooglePlayMedia $media;
+    public string $code;
 }

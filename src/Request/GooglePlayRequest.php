@@ -1,13 +1,13 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperGooglePlay\Request;
 
-use Scraper\Scraper\Annotation\Scraper;
+use Scraper\Scraper\Attribute\Method;
+use Scraper\Scraper\Attribute\Scheme;
+use Scraper\Scraper\Attribute\Scraper;
 use Scraper\Scraper\Request\ScraperRequest;
 
-/**
- * @Scraper(host="play.google.com/", scheme="HTTPS")
- */
+#[Scraper(method: Method::GET, scheme: Scheme::HTTPS, host: 'play.google.com')]
 abstract class GooglePlayRequest extends ScraperRequest
 {
 }

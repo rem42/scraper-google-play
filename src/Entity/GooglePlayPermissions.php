@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperGooglePlay\Entity;
 
@@ -7,9 +7,9 @@ namespace Scraper\ScraperGooglePlay\Entity;
  */
 final class GooglePlayPermissions
 {
-    protected string $title;
+    private string $title;
 
-    protected string $description;
+    private string $description;
 
     public function getTitle(): string
     {

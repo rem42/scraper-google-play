@@ -10,29 +10,31 @@
     }
   ],
   "require": {
-    "php": "^7.4",
-    "rem42/scraper": "2.*",
+    "php": "^8.1",
+    "rem42/scraper": "3.x-dev",
     "symfony/dom-crawler": "^5.0",
-    "symfony/css-selector": "^5.0"
+    "symfony/css-selector": "^5.0",
+    "symfony/http-client": "^6.1"
   },
   "require-dev": {
-    "rem42/php-cs-fixer-config": "^1.0",
-    "phpstan/phpstan": "0.12.*"
+    "rem42/php-cs-fixer-config": "^3.4",
+    "phpstan/phpstan": "^1.8",
+    "phpunit/phpunit": "^9.5"
   },
   "autoload": {
-    "psr-0": {
-      "Scraper\\ScraperGooglePlay\\": "src/"
-    },
     "psr-4": {
       "Scraper\\ScraperGooglePlay\\": "src/"
     }
   },
-  "config": {
-    "bin-dir": "bin/"
+  "autoload-dev": {
+    "psr-4": {
+      "Scraper\\ScraperGooglePlay\\Tests\\": "tests/"
+    }
   },
   "scripts": {
-    "static-analysis": "./bin/phpstan analyse src --level=max --no-progress -vvv",
-    "code-style-check": "./bin/php-cs-fixer fix --dry-run --verbose",
-    "code-style-fix": "./bin/php-cs-fixer fix"
+    "static-analysis": "./vendor/bin/phpstan analyse src --level=max --no-progress -vvv",
+    "code-style-check": "./vendor/bin/php-cs-fixer fix --dry-run --verbose",
+    "code-style-fix": "./vendor/bin/php-cs-fixer fix --using-cache=no",
+    "unit-test": "./vendor/bin/phpunit"
   }
 }

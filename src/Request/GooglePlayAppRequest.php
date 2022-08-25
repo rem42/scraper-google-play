@@ -1,22 +1,18 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperGooglePlay\Request;
 
-use Scraper\Scraper\Annotation\Scraper;
+use Scraper\Scraper\Attribute\Method;
+use Scraper\Scraper\Attribute\Scraper;
 use Scraper\Scraper\Request\RequestBody;
 use Scraper\Scraper\Request\RequestQuery;
 
-/**
- * @Scraper(path="_/PlayStoreUi/data/batchexecute", method="POST")
- */
-final class GooglePlayDetailsApplicationRequest extends GooglePlayRequest implements RequestQuery, RequestBody
+#[Scraper(method: Method::POST, path: '_/PlayStoreUi/data/batchexecute')]
+final class GooglePlayAppRequest extends GooglePlayRequest implements RequestQuery, RequestBody
 {
     protected string $id;
-    protected string $language = 'en';
+    protected string $language;
 
-    /**
-     * @return string[]
-     */
     public function getQuery(): array
     {
         return [
@@ -24,9 +20,6 @@ final class GooglePlayDetailsApplicationRequest extends GooglePlayRequest implem
         ];
     }
 
-    /**
-     * @return string[]
-     */
     public function getBody(): array
     {
         return [
