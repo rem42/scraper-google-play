@@ -2,12 +2,9 @@
 
 namespace Scraper\ScraperGooglePlay\Request;
 
-use Scraper\Scraper\Attribute\Method;
-use Scraper\Scraper\Attribute\Scraper;
 use Scraper\Scraper\Request\RequestBody;
 use Scraper\Scraper\Request\RequestQuery;
 
-#[Scraper(method: Method::POST, path: '_/PlayStoreUi/data/batchexecute')]
 final class GooglePlayAppRequest extends GooglePlayRequest implements RequestQuery, RequestBody
 {
     protected string $id;
@@ -20,6 +17,9 @@ final class GooglePlayAppRequest extends GooglePlayRequest implements RequestQue
         ];
     }
 
+    /**
+     * @return array<string, string>
+     */
     public function getBody(): array
     {
         return [

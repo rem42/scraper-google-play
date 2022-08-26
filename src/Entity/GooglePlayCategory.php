@@ -2,8 +2,8 @@
 
 namespace Scraper\ScraperGooglePlay\Entity;
 
-class GooglePlayCategory
+final class GooglePlayCategory
 {
-    public string $name;
-    public string $code;
+    public ?string $name = null;
+    public ?string $code = null;
 }

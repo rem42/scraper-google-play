@@ -4,9 +4,9 @@ namespace Scraper\ScraperGooglePlay\Entity;
 
 final class GooglePlayDeveloper
 {
-    public string $name;
-    public string $mail;
-    public string $website;
-    public string $address;
-    public string $link;
+    public ?string $name = null;
+    public ?string $mail = null;
+    public ?string $website = null;
+    public ?string $address = null;
+    public ?string $link = null;
 }

@@ -1,0 +1,3 @@
+parameters:
+	ignoreErrors:
+		- '#PHPDoc tag \@var for variable (.*) has no value type specified in iterable type array.(.*)#'

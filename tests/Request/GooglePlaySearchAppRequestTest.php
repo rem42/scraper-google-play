@@ -2,7 +2,7 @@
 
 namespace Scraper\ScraperGooglePlay\Tests\Request;
 
-use Scraper\ScraperGooglePlay\Entity\GooglePlaySearchApp;
+use Scraper\ScraperGooglePlay\Entity\GooglePlayApp;
 use Scraper\ScraperGooglePlay\Request\GooglePlaySearchAppRequest;
 
 /**
@@ -10,19 +10,19 @@ use Scraper\ScraperGooglePlay\Request\GooglePlaySearchAppRequest;
  */
 final class GooglePlaySearchAppRequestTest extends AbtractRequestTest
 {
-    public function testAllocineMovieRequest(): void
+    public function testGooglePlaySearchAppRequest(): void
     {
-        $client = $this->getClient('search_app.json');
+        $client = $this->getClient('search_app.txt');
 
         $request = new GooglePlaySearchAppRequest();
         $request
             ->setLanguage('fr')
-            ->setQuery('hulk')
+            ->setQuery('gps')
         ;
 
         $result = $client->send($request);
 
         $this->assertIsArray($result);
-        $this->assertInstanceOf(GooglePlaySearchApp::class, $result[0]);
+        $this->assertInstanceOf(GooglePlayApp::class, $result[0]);
     }
 }

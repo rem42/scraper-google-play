@@ -12,13 +12,12 @@ final class GooglePlayAppRequestTest extends AbtractRequestTest
 {
     public function testGooglePlayAppRequest(): void
     {
-        $client = $this->getClient('app.json');
+        $client = $this->getClient('app.txt');
 
         $request = new GooglePlayAppRequest();
         $request
             ->setLanguage('fr')
-            ->setId('com.mgif.stickman.tower')
-            ->setId('org.prowl.torque')
+            ->setId('fr.reliefmaps.app')
         ;
 
         $result = $client->send($request);
