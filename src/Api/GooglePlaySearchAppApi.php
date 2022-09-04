@@ -5,6 +5,7 @@ namespace Scraper\ScraperGooglePlay\Api;
 use Scraper\Scraper\Api\AbstractApi;
 use Scraper\ScraperGooglePlay\Entity\GooglePlayApp;
 use Scraper\ScraperGooglePlay\Entity\GooglePlayDeveloper;
+use Scraper\ScraperGooglePlay\Entity\GooglePlayImage;
 use Scraper\ScraperGooglePlay\Utils\Price;
 
 final class GooglePlaySearchAppApi extends AbstractApi
@@ -28,6 +29,7 @@ final class GooglePlaySearchAppApi extends AbstractApi
         foreach ($apps as $app) {
             $a = new GooglePlayApp();
 
+            $a->id = $app[12][0] ?? null;
             $a->packageName = $app[12][0] ?? null;
             $a->name = $app[2] ?? null;
             $a->cover = $app[1][1][0][3][2] ?? null;
@@ -40,8 +42,15 @@ final class GooglePlaySearchAppApi extends AbstractApi
             $d = new GooglePlayDeveloper();
             $d->name = $app[4][0][0][0] ?? null;
             $d->link = $app[4][0][0][1][4][2] ?? null;
-
             $a->developer = $d;
+
+            foreach ($app[1][1] as $image) {
+                $i = new GooglePlayImage();
+                $i->url = $image[3][2];
+                $i->height = $image[2][0] ?? null;
+                $i->width = $image[2][1] ?? null;
+                $a->images[] = $i;
+            }
 
             if (null !== $app[7] && \count($app[7])) {
                 $a->type = Price::$PAID;

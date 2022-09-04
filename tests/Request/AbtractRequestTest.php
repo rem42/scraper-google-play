@@ -12,7 +12,7 @@ abstract class AbtractRequestTest extends TestCase
 {
     protected function getClient(string $fixture): Client
     {
-        /* $responseInterface = $this->createMock(ResponseInterface::class);
+        $responseInterface = $this->createMock(ResponseInterface::class);
         $responseInterface
             ->method('getStatusCode')->willReturn(200);
         $responseInterface
@@ -21,7 +21,7 @@ abstract class AbtractRequestTest extends TestCase
         $httpClient = $this->createMock(HttpClientInterface::class);
         $httpClient
             ->method('request')->willReturn($responseInterface)
-        ; */
+        ;
         $httpClient = new CurlHttpClient();
         return new Client($httpClient);
     }

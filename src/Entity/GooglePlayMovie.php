@@ -2,11 +2,11 @@
 
 namespace Scraper\ScraperGooglePlay\Entity;
 
-final class GooglePlayApp extends GooglePlayObject
+final class GooglePlayMovie extends GooglePlayObject
 {
     public ?string $packageName = null;
-    public ?string $latestVersion = null;
     public ?string $logo = null;
+    public ?string $landscape = null;
     public ?GooglePlayPegi $pegi = null;
     public ?GooglePlayDeveloper $developer = null;
     public ?GooglePlayCategory $category = null;
@@ -14,5 +14,5 @@ final class GooglePlayApp extends GooglePlayObject
     public ?int $download = null;
     public ?string $changeLog = null;
     public ?string $privacyPolicyUrl = null;
-    public ?\DateTimeInterface $firstReleaseDate = null;
+    public ?string $firstReleaseDate = null;
 }
