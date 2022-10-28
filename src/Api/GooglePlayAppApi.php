@@ -72,7 +72,7 @@ final class GooglePlayAppApi extends AbstractApi
             $a->images[] = $i;
         }
 
-        if (\is_array($app[100][0][0])) {
+        if (isset($app[100][0][0]) && \is_array($app[100][0][0])) {
             $v = new GooglePlayMedia();
             $v->id = $app[100][0][0][2] ?? null;
             $v->url = $app[100][0][0][3][2] ?? null;
