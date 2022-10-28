@@ -22,7 +22,7 @@ abstract class AbtractRequestTest extends TestCase
         $httpClient
             ->method('request')->willReturn($responseInterface)
         ;
-        $httpClient = new CurlHttpClient();
+        // $httpClient = new CurlHttpClient();
         return new Client($httpClient);
     }
 }

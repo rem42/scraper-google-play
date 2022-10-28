@@ -2,8 +2,7 @@
 
 namespace Scraper\ScraperGooglePlay\Tests\Request;
 
-use Scraper\ScraperGooglePlay\Entity\GooglePlayApp;
-use Scraper\ScraperGooglePlay\Request\GooglePlaySearchAppRequest;
+use Scraper\ScraperGooglePlay\Entity\GooglePlayBook;
 use Scraper\ScraperGooglePlay\Request\GooglePlaySearchBookRequest;
 
 /**
@@ -24,6 +23,6 @@ final class GooglePlaySearchBookRequestTest extends AbtractRequestTest
         $result = $client->send($request);
 
         $this->assertIsArray($result);
-        $this->assertInstanceOf(GooglePlayApp::class, $result[0]);
+        $this->assertInstanceOf(GooglePlayBook::class, $result[0]);
     }
 }
