@@ -4,12 +4,14 @@ namespace Scraper\ScraperGooglePlay\Api;
 
 use Scraper\Scraper\Api\AbstractApi;
 use Scraper\ScraperGooglePlay\Entity\GooglePlayApp;
+use Scraper\ScraperGooglePlay\Entity\GooglePlayAuthor;
 use Scraper\ScraperGooglePlay\Entity\GooglePlayBook;
 use Scraper\ScraperGooglePlay\Entity\GooglePlayCategory;
 use Scraper\ScraperGooglePlay\Entity\GooglePlayDeveloper;
 use Scraper\ScraperGooglePlay\Entity\GooglePlayImage;
 use Scraper\ScraperGooglePlay\Entity\GooglePlayMedia;
 use Scraper\ScraperGooglePlay\Entity\GooglePlayPegi;
+use Scraper\ScraperGooglePlay\Entity\GooglePlayRating;
 use Scraper\ScraperGooglePlay\Utils\Price;
 
 final class GooglePlayBookApi extends AbstractApi
@@ -23,16 +25,56 @@ final class GooglePlayBookApi extends AbstractApi
         $content = json_decode($content[0][2], false);
 
         /** @var array<int, array> $app */
-        $app = $content[1][2];
+        $app = $content[1][7];
+
+        $t = json_encode($app);
 
         $a = new GooglePlayBook();
-        $a->id = $app[77][0] ?? null;
-        $a->name = $app[0][0] ?? null;
-        $a->description = $app[72][0][1] ?? null;
-        $a->shortDescription = $app[73][0][1] ?? null;
+        //$a->id = ;
 
-        $a->rating = $app[51][0][0] ?? null;
-        $a->ratingFloat = $app[51][0][1] ?? null;
+        $a->name = $app[0][0] ?? null;
+        $a->description = $app[6][0][1] ?? null;
+        //$a->shortDescription = $app[73][0][1] ?? null;
+
+        if(isset($app[5])) {
+            $author = new GooglePlayAuthor();
+            $author->name = $app[5][4] ?? null;
+            $author->description = $app[5][0][1] ?? null;
+            if(isset($app[5][2][3][2])) {
+                $image = new GooglePlayImage();
+                $image->url = $app[5][2][3][2];
+                $author->images[] = $image;
+            }
+            if(isset($app[5][3][3][2])) {
+                $image = new GooglePlayImage();
+                $image->url = $app[5][3][3][2];
+                $author->images[] = $image;
+            }
+            $a->author = $author;
+        }
+
+        if(isset($app[8][0][3][2])) {
+            $image = new GooglePlayImage();
+            $image->url = $app[8][0][3][2];
+            $image->height = $app[8][0][2][0];
+            $image->width = $app[8][0][2][1];
+            $a->cover = $image;
+        }
+
+        if(isset($app[9][0][0])) {
+            $rating = new GooglePlayRating();
+            $rating->note = $app[9][0][0] ?? null;
+            $rating->noteFloat = $app[9][0][1] ?? null;
+
+
+            $a->rating = $rating;
+        }
+
+
+
+
+
+        $a->name = $app[0][0] ?? null;
 
         $a->type = Price::$FREE;
         $a->price = $app[57][0][0][0][0][1][0][0] ?? null;

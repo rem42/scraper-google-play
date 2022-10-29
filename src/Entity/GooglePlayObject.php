@@ -7,7 +7,6 @@ abstract class GooglePlayObject
     public ?string $id = null;
     public ?string $name = null;
     public ?\DateTimeInterface $releaseDate = null;
-    public ?string $cover = null;
     public ?string $description = null;
     public ?string $shortDescription = null;
     /** @var array<int, GooglePlayImage> */
@@ -15,8 +14,6 @@ abstract class GooglePlayObject
     public ?GooglePlayMedia $video = null;
     public ?int $type = null;
     public ?string $link = null;
-    public ?string $rating = null;
-    public ?float $ratingFloat = null;
     public ?int $price = null;
     public ?string $priceFormatted = null;
     public ?string $currency = null;
