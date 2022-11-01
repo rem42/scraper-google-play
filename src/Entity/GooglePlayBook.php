@@ -10,4 +10,6 @@ final class GooglePlayBook extends GooglePlayObject
     public ?GooglePlayImage $cover = null;
     public ?Rating $rating = null;
     public ?int $pageCount = null;
+    public ?string $publisher = null;
+    public ?string $isbn = null;
 }

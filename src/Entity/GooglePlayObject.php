@@ -19,4 +19,6 @@ abstract class GooglePlayObject
     public ?Offer $offer = null;
     /** @var array<int, string> */
     public array $genres = [];
+    /** @var array<int, string> */
+    public array $categories = [];
 }

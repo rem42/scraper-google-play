@@ -4,7 +4,6 @@ namespace Scraper\ScraperGooglePlay\Tests\Request;
 
 use PHPUnit\Framework\TestCase;
 use Scraper\Scraper\Client;
-use Symfony\Component\HttpClient\CurlHttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
@@ -22,7 +21,7 @@ abstract class AbtractRequestTest extends TestCase
         $httpClient
             ->method('request')->willReturn($responseInterface)
         ;
-        // $httpClient = new CurlHttpClient();
+
         return new Client($httpClient);
     }
 }

@@ -5,9 +5,7 @@ namespace Scraper\ScraperGooglePlay\Api;
 use Scraper\Scraper\Api\AbstractApi;
 use Scraper\ScraperGooglePlay\Entity\GooglePlayAuthor;
 use Scraper\ScraperGooglePlay\Entity\GooglePlayBook;
-use Scraper\ScraperGooglePlay\Entity\GooglePlayCategory;
 use Scraper\ScraperGooglePlay\Entity\GooglePlayImage;
-use Scraper\ScraperGooglePlay\Entity\GooglePlayMedia;
 use Scraper\ScraperGooglePlay\Entity\Shared\Offer;
 use Scraper\ScraperGooglePlay\Entity\Shared\Rating;
 use Scraper\ScraperGooglePlay\Entity\Shared\RatingDistribution;
@@ -25,15 +23,12 @@ final class GooglePlayBookApi extends AbstractApi
         /** @var array<int, array> $app */
         $app = $content[1][7];
 
-        $t = json_encode($app);
-
         $a = new GooglePlayBook();
-        // $a->id = ;
 
+        $a->id = $content[11][0][0] ?? null;
         $a->name = $app[0][0] ?? null;
         $a->description = $app[6][0][1] ?? null;
         $a->pageCount = $app[13][0] ?? null;
-        // $a->shortDescription = $app[73][0][1] ?? null;
 
         if (isset($app[5])) {
             $author = new GooglePlayAuthor();
@@ -90,33 +85,17 @@ final class GooglePlayBookApi extends AbstractApi
         }
         $a->offer = $offer;
 
-        if (isset($app[10][1][0])) {
-            $dateTime = new \DateTime();
-            $dateTime->setTimestamp($app[10][1][0]);
-            $a->firstReleaseDate = $dateTime;
+        $a->publisher = $app[12][0] ?? null;
+
+        if (isset($app[12][1])) {
+            $a->releaseDate = \DateTime::createFromFormat('Y-m-d', $app[12][1]);
         }
 
-        if (isset($app[144][2][0])) {
-            $dateTime = new \DateTime();
-            $dateTime->setTimestamp($app[144][2][0]);
-            $a->releaseDate = $dateTime;
+        if (isset($app[12][2])) {
+            $a->isbn = str_replace('ISBN:', '', $app[12][2]);
         }
 
-        /* foreach ($app[78][0] as $img) {
-            $i = new GooglePlayImage();
-            $i->url = $img[3][2] ?? null;
-            $i->width = $img[2][1] ?? null;
-            $i->height = $img[2][0] ?? null;
-            $a->images[] = $i;
-        } */
-
-        /* if (isset($app[100][0][0]) && \is_array($app[100][0][0])) {
-            $v = new GooglePlayMedia();
-            $v->id = $app[100][0][0][2] ?? null;
-            $v->url = $app[100][0][0][3][2] ?? null;
-            $v->metadata = $app[100][0][0][4] ?? null;
-            $a->video = $v;
-        } */
+        // $app[14] -> Serie
 
         if (isset($app[16][0][11])) {
             foreach ($app[16][0][11][1] as $item) {
@@ -128,12 +107,14 @@ final class GooglePlayBookApi extends AbstractApi
             }
         }
 
-        /* if (\is_array($app[79][0][0])) {
-            $c = new GooglePlayCategory();
-            $c->name = $app[79][0][0][0] ?? null;
-            $c->code = $app[79][0][0][2] ?? null;
-            $a->category = $c;
-        } */
+        if (isset($app[26][0])) {
+            foreach ($app[26][0] as $item) {
+                $a->categories[] = $item[0];
+            }
+        }
+
+        unset($content, $app, $item, $genres);
+
         return $a;
     }
 }
