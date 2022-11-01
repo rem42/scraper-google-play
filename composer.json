@@ -11,7 +11,8 @@
   ],
   "require": {
     "php": "^8.1",
-    "rem42/scraper": "^3.0"
+    "rem42/scraper": "^3.0",
+    "symfony/http-client": "^6.1"
   },
   "require-dev": {
     "rem42/php-cs-fixer-config": "^3.4",

@@ -3,9 +3,9 @@
 namespace Scraper\ScraperGooglePlay\Api;
 
 use Scraper\Scraper\Api\AbstractApi;
-use Scraper\ScraperGooglePlay\Entity\GooglePlayAuthor;
 use Scraper\ScraperGooglePlay\Entity\GooglePlayBook;
-use Scraper\ScraperGooglePlay\Entity\GooglePlayImage;
+use Scraper\ScraperGooglePlay\Entity\Shared\Author;
+use Scraper\ScraperGooglePlay\Entity\Shared\Image;
 use Scraper\ScraperGooglePlay\Entity\Shared\Offer;
 use Scraper\ScraperGooglePlay\Entity\Shared\Rating;
 use Scraper\ScraperGooglePlay\Entity\Shared\RatingDistribution;
@@ -31,18 +31,18 @@ final class GooglePlayBookApi extends AbstractApi
         $a->pageCount = $app[13][0] ?? null;
 
         if (isset($app[5])) {
-            $author = new GooglePlayAuthor();
+            $author = new Author();
             $author->name = $app[5][4] ?? null;
             $author->description = $app[5][0][1] ?? null;
 
             if (isset($app[5][2][3][2])) {
-                $image = new GooglePlayImage();
+                $image = new Image();
                 $image->url = $app[5][2][3][2];
                 $author->images[] = $image;
             }
 
             if (isset($app[5][3][3][2])) {
-                $image = new GooglePlayImage();
+                $image = new Image();
                 $image->url = $app[5][3][3][2];
                 $author->images[] = $image;
             }
@@ -50,7 +50,7 @@ final class GooglePlayBookApi extends AbstractApi
         }
 
         if (isset($app[8][0][3][2])) {
-            $image = new GooglePlayImage();
+            $image = new Image();
             $image->url = $app[8][0][3][2];
             $image->height = $app[8][0][2][0];
             $image->width = $app[8][0][2][1];
