@@ -2,9 +2,12 @@
 
 namespace Scraper\ScraperGooglePlay\Entity;
 
+use Scraper\ScraperGooglePlay\Entity\Shared\Rating;
+
 final class GooglePlayBook extends GooglePlayObject
 {
     public ?GooglePlayAuthor $author = null;
     public ?GooglePlayImage $cover = null;
-    public ?GooglePlayRating $rating = null;
+    public ?Rating $rating = null;
+    public ?int $pageCount = null;
 }

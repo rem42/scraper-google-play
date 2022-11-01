@@ -2,6 +2,8 @@
 
 namespace Scraper\ScraperGooglePlay\Entity;
 
+use Scraper\ScraperGooglePlay\Entity\Shared\Offer;
+
 abstract class GooglePlayObject
 {
     public ?string $id = null;
@@ -14,8 +16,7 @@ abstract class GooglePlayObject
     public ?GooglePlayMedia $video = null;
     public ?int $type = null;
     public ?string $link = null;
-    public ?int $price = null;
-    public ?string $priceFormatted = null;
-    public ?string $currency = null;
-    public ?string $buyLink = null;
+    public ?Offer $offer = null;
+    /** @var array<int, string> */
+    public array $genres = [];
 }

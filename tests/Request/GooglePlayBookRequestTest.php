@@ -2,9 +2,7 @@
 
 namespace Scraper\ScraperGooglePlay\Tests\Request;
 
-use Scraper\ScraperGooglePlay\Entity\GooglePlayApp;
 use Scraper\ScraperGooglePlay\Entity\GooglePlayBook;
-use Scraper\ScraperGooglePlay\Request\GooglePlayAppRequest;
 use Scraper\ScraperGooglePlay\Request\GooglePlayBookRequest;
 
 /**
