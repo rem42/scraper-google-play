@@ -4,6 +4,9 @@ namespace Scraper\ScraperGooglePlay\Entity;
 
 final class GooglePlayMovie extends GooglePlayObject
 {
+    public ?string $rating = null;
+    public ?float $ratingFloat = null;
+    public ?string $cover = null;
     public ?string $packageName = null;
     public ?string $logo = null;
     public ?string $landscape = null;
