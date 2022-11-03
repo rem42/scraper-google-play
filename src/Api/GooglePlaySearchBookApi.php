@@ -30,7 +30,6 @@ final class GooglePlaySearchBookApi extends AbstractApi
             $books = $category[0][0];
 
             foreach ($books as $book) {
-                $p = json_encode($book);
                 $a = new GooglePlayBook();
 
                 $a->id = $book[12][0] ?? null;
@@ -38,9 +37,9 @@ final class GooglePlaySearchBookApi extends AbstractApi
 
                 if (isset($book[1][1][0])) {
                     $image = new Image();
-                    $image->url = $book[1][1][0][3][2];
-                    $image->height = $book[1][1][0][2][0];
-                    $image->width = $book[1][1][0][2][1];
+                    $image->url = $book[1][1][0][3][2] ?? null;
+                    $image->height = $book[1][1][0][2][0] ?? null;
+                    $image->width = $book[1][1][0][2][1] ?? null;
                     $a->cover = $image;
                 }
 
