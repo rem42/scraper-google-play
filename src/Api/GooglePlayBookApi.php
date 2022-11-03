@@ -89,7 +89,7 @@ final class GooglePlayBookApi extends AbstractApi
 
         if (isset($app[12][1])) {
             $releaseDate = \DateTime::createFromFormat('Y-m-d', $app[12][1]);
-            $a->releaseDate = $releaseDate !== false ? $releaseDate : null;
+            $a->releaseDate = false !== $releaseDate ? $releaseDate : null;
         }
 
         if (isset($app[12][2])) {
