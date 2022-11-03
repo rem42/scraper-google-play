@@ -48,8 +48,8 @@ final class GooglePlayAppApi extends AbstractApi
             $p->description = $app[9][3][1] ?? null;
             $m = new Image();
             $m->url = $app[9][1][3][2] ?? null;
-            $m->width = $img[9][1][2][1] ?? null;
-            $m->height = $img[9][1][2][0] ?? null;
+            $m->width = $app[9][1][2][1] ?? null;
+            $m->height = $app[9][1][2][0] ?? null;
             $p->media = $m;
             $a->pegi = $p;
         }

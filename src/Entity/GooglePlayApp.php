@@ -5,6 +5,7 @@ namespace Scraper\ScraperGooglePlay\Entity;
 use Scraper\ScraperGooglePlay\Entity\Shared\Category;
 use Scraper\ScraperGooglePlay\Entity\Shared\Developer;
 use Scraper\ScraperGooglePlay\Entity\Shared\Pegi;
+use Scraper\ScraperGooglePlay\Entity\Shared\Permission;
 
 final class GooglePlayApp extends GooglePlayObject
 {
@@ -13,6 +14,7 @@ final class GooglePlayApp extends GooglePlayObject
     public ?Pegi $pegi = null;
     public ?Developer $developer = null;
     public ?Category $category = null;
+    /** @var array<int, Permission> */
     public array $permissions = [];
     public ?string $downloadRange = null;
     public ?int $download = null;
