@@ -52,8 +52,8 @@ final class GooglePlayBookApi extends AbstractApi
         if (isset($app[8][0][3][2])) {
             $image = new Image();
             $image->url = $app[8][0][3][2];
-            $image->height = $app[8][0][2][0];
-            $image->width = $app[8][0][2][1];
+            $image->height = $app[8][0][2][0] ?? null;
+            $image->width = $app[8][0][2][1] ?? null;
             $a->cover = $image;
         }
 

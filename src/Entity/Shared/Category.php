@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Scraper\ScraperGooglePlay\Entity;
+namespace Scraper\ScraperGooglePlay\Entity\Shared;
 
-final class GooglePlayCategory
+final class Category
 {
     public ?string $name = null;
     public ?string $code = null;
