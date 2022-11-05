@@ -90,11 +90,11 @@ final class GooglePlayAppApi extends AbstractApi
 
         if (\is_array($app[69])) {
             $d = new Developer();
-            $d->name = $app[69][5][1] ?? null;
-            $d->mail = $app[12][5][2][0] ?? null;
-            $d->website = $app[69][1][0] ?? null;
-            $d->address = $app[60][2][0] ?? null;
-            $d->link = $app[12][5][5][4][2] ?? null;
+            $d->name = $app[68][0] ?? null;
+            $d->link = $app[68][1][4][2] ?? null;
+            $d->mail = $app[69][1][0] ?? null;
+            $d->website = $app[69][0][5][2] ?? null;
+            $d->address = $app[69][2][0] ?? null;
             $a->developer = $d;
         }
 
