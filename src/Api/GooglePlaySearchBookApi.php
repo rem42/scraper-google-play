@@ -34,6 +34,7 @@ final class GooglePlaySearchBookApi extends AbstractApi
 
                 $a->id = $book[12][0] ?? null;
                 $a->name = $book[2] ?? null;
+                $a->link = $book[9][4][2] ?? null;
 
                 if (isset($book[1][1][0])) {
                     $image = new Image();
