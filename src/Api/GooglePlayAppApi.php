@@ -105,8 +105,10 @@ final class GooglePlayAppApi extends AbstractApi
                 $p->icon = $item[1][3][2];
                 $p->code = $item[3][0];
 
-                foreach ($item[2] as $value) {
-                    $p->list[] = $value[1];
+                if (isset($item[2])) {
+                    foreach ($item[2] as $value) {
+                        $p->list[] = $value[1];
+                    }
                 }
                 $a->permissions[] = $p;
             }
