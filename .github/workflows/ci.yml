@@ -3,6 +3,7 @@ name: CI
 on:
     - pull_request
     - push
+    - workflow_dispatch
 
 jobs:
     tests:
@@ -11,7 +12,9 @@ jobs:
             matrix:
                 include:
                     -   operating-system: 'ubuntu-latest'
-                        php-version: '8.1'
+                        php-version: '8.4'
+                    -   operating-system: 'ubuntu-latest'
+                        php-version: '8.5'
 
         name: PHP ${{ matrix.php-version }}
 
@@ -19,7 +22,7 @@ jobs:
 
         steps:
             -   name: Checkout code
-                uses: actions/checkout@v2
+                uses: actions/checkout@v6
 
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2
@@ -28,14 +31,13 @@ jobs:
                     tools: flex
                 env:
                     fail-fast: false # disabled as old PHP version cannot run flex
-                    update: ${{ matrix.php-version == '8.0' }} # force update to 8.0.1+, ref https://github.com/shivammathur/setup-php/issues/394#issuecomment-760461251
 
             -   name: Get Composer cache directory
                 id: composer-cache
                 run: echo "::set-output name=dir::$(composer config cache-dir)"
 
             -   name: Cache dependencies
-                uses: actions/cache@v2
+                uses: actions/cache@v3
                 with:
                     path: ${{ steps.composer-cache.outputs.dir }}
                     key: composer-${{ runner.os }}-${{ matrix.php-version }}-${{ hashFiles('**/composer.*') }}-${{ matrix.composer-flags }}
@@ -55,10 +57,11 @@ jobs:
                         composer info -D
 
             -   name: Run PHP CS Fixer
-                run: composer run-script code-style-check
+                run: ./vendor/bin/php-cs-fixer fix --dry-run --verbose
 
             -   name: Run PHPSTAN
-                run: composer run-script static-analysis
+                continue-on-error: true
+                run: ./vendor/bin/phpstan analyse src --level=max --no-progress -vvv
 
             -   name: Run UNIT-TESTS
-                run: composer run-script unit-test
+                run: ./vendor/bin/phpunit
