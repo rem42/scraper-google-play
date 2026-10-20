@@ -4,10 +4,17 @@ declare(strict_types=1);
 
 namespace Scraper\ScraperGooglePlay\Request;
 
-use Scraper\Scraper\Request\RequestBody;
+use Scraper\Scraper\Attribute\Method;
+use Scraper\Scraper\Attribute\Scheme;
+use Scraper\Scraper\Attribute\Scraper;
 use Scraper\Scraper\Request\RequestQuery;
 
-final class GooglePlayBookRequest extends GooglePlayRequest implements RequestQuery, RequestBody
+/**
+ * The book details batchexecute RPC (Ws7gDc) is no longer answered: the book page is fetched instead,
+ * its embedded "ds:4" payload carries the book record.
+ */
+#[Scraper(method: Method::GET, scheme: Scheme::HTTPS, host: 'play.google.com', path: '/store/books/details')]
+final class GooglePlayBookRequest extends GooglePlayRequest implements RequestQuery
 {
     protected string $id;
     protected string $language;
@@ -15,17 +22,8 @@ final class GooglePlayBookRequest extends GooglePlayRequest implements RequestQu
     public function getQuery(): array
     {
         return [
+            'id' => $this->id,
             'hl' => $this->language,
-        ];
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public function getBody(): array
-    {
-        return [
-            'f.req' => '[[["Ws7gDc", "[null,null,[[1,5,6,7,8,9,10,11,12,13,14,15,17,21,23,24,26,27,29,30,31,32,35,38,39,42]],[[[true],null,[[null,[]]],null,null,null,null,[null,2],null,null,null,null,null,null,null,null,null,null,null,null,null,null,[1]],[null,[[null,[]]]],[null,[[null,[]]],null,[true]],[null,[[null,[]]]],null,null,null,null,[[[null,[]]]],[[[null,[]]]]],null,[[\"' . $this->id . '\",9]]]", null, "3"]]]',
         ];
     }
 

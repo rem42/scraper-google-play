@@ -15,16 +15,13 @@ use Scraper\ScraperGooglePlay\Entity\Shared\Pegi;
 use Scraper\ScraperGooglePlay\Entity\Shared\Permission;
 use Scraper\ScraperGooglePlay\Entity\Shared\Rating;
 use Scraper\ScraperGooglePlay\Entity\Shared\RatingDistribution;
+use Scraper\ScraperGooglePlay\Utils\ScriptData;
 
 final class GooglePlayAppApi extends AbstractApi
 {
     public function execute(): GooglePlayApp
     {
-        /** @var array<mixed> $content */
-        $content = json_decode(substr($this->response->getContent(), 6), false);
-
-        /** @var array<mixed> $content */
-        $content = json_decode($content[0][2], false);
+        $content = ScriptData::extract($this->response->getContent(), 'ds:5');
 
         /** @var array<int, array<mixed>> $app */
         $app = $content[1][2];
@@ -147,9 +144,9 @@ final class GooglePlayAppApi extends AbstractApi
             $a->video = $v;
         }
 
-        if (isset($app[144][2][0])) {
+        if (isset($app[145][0][1][0])) {
             $dateTime = new \DateTime();
-            $dateTime->setTimestamp($app[144][2][0]);
+            $dateTime->setTimestamp($app[145][0][1][0]);
             $a->releaseDate = $dateTime;
         }
 

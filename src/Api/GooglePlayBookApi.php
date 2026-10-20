@@ -11,23 +11,20 @@ use Scraper\ScraperGooglePlay\Entity\Shared\Image;
 use Scraper\ScraperGooglePlay\Entity\Shared\Offer;
 use Scraper\ScraperGooglePlay\Entity\Shared\Rating;
 use Scraper\ScraperGooglePlay\Entity\Shared\RatingDistribution;
+use Scraper\ScraperGooglePlay\Utils\ScriptData;
 
 final class GooglePlayBookApi extends AbstractApi
 {
     public function execute(): GooglePlayBook
     {
-        /** @var array<mixed> $content */
-        $content = json_decode(substr($this->response->getContent(), 6), false);
-
-        /** @var array<mixed> $content */
-        $content = json_decode($content[0][2], false);
+        $content = ScriptData::extract($this->response->getContent(), 'ds:4');
 
         /** @var array<int, array<mixed>> $app */
-        $app = $content[1][7];
+        $app = $content[1][0]['8'];
 
         $a = new GooglePlayBook();
 
-        $a->id = $content[11][0][0] ?? null;
+        $a->id = $this->extractId($app);
         $a->name = $app[0][0] ?? null;
         $a->description = $app[6][0][1] ?? null;
         $a->pageCount = $app[13][0] ?? null;
@@ -100,24 +97,32 @@ final class GooglePlayBookApi extends AbstractApi
 
         // $app[14] -> Serie
 
-        if (isset($app[16][0][11])) {
-            foreach ($app[16][0][11][1] as $item) {
-                $genres = explode('/', $item[0][1]);
-                $a->genres = [
-                    ...$a->genres,
-                    ...$genres,
-                ];
-            }
-        }
-
         if (isset($app[26][0])) {
             foreach ($app[26][0] as $item) {
                 $a->categories[] = $item[0];
             }
         }
 
-        unset($content, $app, $item, $genres);
+        unset($content, $app, $item);
 
         return $a;
+    }
+
+    /**
+     * The book id is not part of the record itself: it is read from the reader link (".../books/reader?id=...").
+     *
+     * @param array<mixed> $app
+     */
+    private function extractId(array $app): ?string
+    {
+        $readerUrl = $app[41][0][5][2] ?? null;
+
+        if (!\is_string($readerUrl)) {
+            return null;
+        }
+
+        parse_str((string) parse_url($readerUrl, \PHP_URL_QUERY), $query);
+
+        return \is_string($query['id'] ?? null) ? $query['id'] : null;
     }
 }

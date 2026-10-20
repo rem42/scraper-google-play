@@ -4,10 +4,17 @@ declare(strict_types=1);
 
 namespace Scraper\ScraperGooglePlay\Request;
 
-use Scraper\Scraper\Request\RequestBody;
+use Scraper\Scraper\Attribute\Method;
+use Scraper\Scraper\Attribute\Scheme;
+use Scraper\Scraper\Attribute\Scraper;
 use Scraper\Scraper\Request\RequestQuery;
 
-final class GooglePlayAppRequest extends GooglePlayRequest implements RequestQuery, RequestBody
+/**
+ * The app details batchexecute RPC (Ws7gDc) now answers with a gateway error, so the app page is fetched instead:
+ * its embedded "ds:5" payload carries the same data.
+ */
+#[Scraper(method: Method::GET, scheme: Scheme::HTTPS, host: 'play.google.com', path: '/store/apps/details')]
+final class GooglePlayAppRequest extends GooglePlayRequest implements RequestQuery
 {
     protected string $id;
     protected string $language;
@@ -15,17 +22,8 @@ final class GooglePlayAppRequest extends GooglePlayRequest implements RequestQue
     public function getQuery(): array
     {
         return [
+            'id' => $this->id,
             'hl' => $this->language,
-        ];
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public function getBody(): array
-    {
-        return [
-            'f.req' => '[[["Ws7gDc","[null,null,[[1,9,10,11,14,19,20,38,43,45,47,49,52,58,59,63,69,70,73,74,75,78,79,80,91,92,95,96,97,100,101,103,106,112,119,137,139,141,145,146]],[[[true],null,[[[]]],null,null,null,null,[null,2],null,null,null,null,null,null,null,null,null,null,null,null,null,null,[1]],[null,[[[]]]],[null,[[[]]],null,[true]],[null,[[[]]]],null,null,null,null,[[[[]]]],[[[[]]]]],null,[[\"' . $this->id . '\",7]]]",null,"5"]]]',
         ];
     }
 

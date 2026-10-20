@@ -12,9 +12,9 @@ use Scraper\ScraperGooglePlay\Request\GooglePlayBookRequest;
  */
 final class GooglePlayBookRequestTest extends AbstractRequestTestCase
 {
-    public function testGooglePlayAppRequest(): void
+    public function testGooglePlayBookRequest(): void
     {
-        $client = $this->getClient('book.txt');
+        $client = $this->getClient('book.html');
 
         $request = new GooglePlayBookRequest();
         $request
@@ -25,5 +25,10 @@ final class GooglePlayBookRequestTest extends AbstractRequestTestCase
         $result = $client->send($request);
 
         $this->assertInstanceOf(GooglePlayBook::class, $result);
+        $this->assertSame('aXkq9-R2pwAC', $result->id);
+        $this->assertSame("Titeuf\u{00A0}: Dieu, le sexe et les bretelles", $result->name);
+        $this->assertSame('Glénat BD', $result->publisher);
+        $this->assertSame(48, $result->pageCount);
+        $this->assertSame('9782723477055', $result->isbn);
     }
 }
