@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Scraper\ScraperGooglePlay\Tests\Request;
 
@@ -7,17 +9,18 @@ use Scraper\Scraper\Client;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
-abstract class AbtractRequestTest extends TestCase
+abstract class AbstractRequestTestCase extends TestCase
 {
     protected function getClient(string $fixture): Client
     {
-        $responseInterface = $this->createMock(ResponseInterface::class);
+        $responseInterface = $this->createStub(ResponseInterface::class);
         $responseInterface
-            ->method('getStatusCode')->willReturn(200);
+            ->method('getStatusCode')->willReturn(200)
+        ;
         $responseInterface
             ->method('getContent')->willReturn(file_get_contents(__DIR__ . '/../fixtures/' . $fixture))
         ;
-        $httpClient = $this->createMock(HttpClientInterface::class);
+        $httpClient = $this->createStub(HttpClientInterface::class);
         $httpClient
             ->method('request')->willReturn($responseInterface)
         ;

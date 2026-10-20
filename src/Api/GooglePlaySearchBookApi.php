@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Scraper\ScraperGooglePlay\Api;
 
@@ -15,13 +17,13 @@ final class GooglePlaySearchBookApi extends AbstractApi
      */
     public function execute(): array
     {
-        /** @var array $content */
+        /** @var array<mixed> $content */
         $content = json_decode(substr($this->response->getContent(), 6), false);
 
-        /** @var array $content */
+        /** @var array<mixed> $content */
         $content = json_decode($content[0][2], false);
 
-        /** @var array $categories */
+        /** @var array<mixed> $categories */
         $categories = $content[0][1];
 
         $data = [];

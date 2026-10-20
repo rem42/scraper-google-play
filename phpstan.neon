@@ -1,3 +1,14 @@
 parameters:
-	ignoreErrors:
-		- '#PHPDoc tag \@var for variable (.*) has no value type specified in iterable type array.(.*)#'
+    level: max
+    paths:
+        - src
+    ignoreErrors:
+        # Google Play responses are positional, untyped nested JSON arrays: every access is `mixed`.
+        -
+            identifiers:
+                - offsetAccess.nonOffsetAccessible
+                - assign.propertyType
+                - foreach.nonIterable
+                - argument.type
+                - function.alreadyNarrowedType
+            path: src/Api/*

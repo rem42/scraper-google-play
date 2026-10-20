@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Scraper\ScraperGooglePlay\Entity;
 
@@ -15,6 +17,7 @@ abstract class GooglePlayObject
     public ?\DateTimeInterface $releaseDate = null;
     public ?string $description = null;
     public ?string $shortDescription = null;
+
     /** @var array<int, Image> */
     public array $images = [];
     public ?Media $video = null;
@@ -22,8 +25,10 @@ abstract class GooglePlayObject
     public ?string $link = null;
     public ?Rating $rating = null;
     public ?Offer $offer = null;
+
     /** @var array<int, string> */
     public array $genres = [];
+
     /** @var array<int, string> */
     public array $categories = [];
 }

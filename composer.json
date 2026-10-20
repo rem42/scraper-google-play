@@ -11,6 +11,7 @@
   ],
   "require": {
     "php": "^8.4",
+    "ext-json": "*",
     "rem42/scraper": "^3.4"
   },
   "require-dev": {

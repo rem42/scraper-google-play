@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Scraper\ScraperGooglePlay\Entity;
 
@@ -14,6 +16,7 @@ final class GooglePlayApp extends GooglePlayObject
     public ?Pegi $pegi = null;
     public ?Developer $developer = null;
     public ?Category $category = null;
+
     /** @var array<int, Permission> */
     public array $permissions = [];
     public ?string $downloadRange = null;

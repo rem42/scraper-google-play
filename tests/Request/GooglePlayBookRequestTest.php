@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Scraper\ScraperGooglePlay\Tests\Request;
 
@@ -8,7 +10,7 @@ use Scraper\ScraperGooglePlay\Request\GooglePlayBookRequest;
 /**
  * @internal
  */
-final class GooglePlayBookRequestTest extends AbtractRequestTest
+final class GooglePlayBookRequestTest extends AbstractRequestTestCase
 {
     public function testGooglePlayAppRequest(): void
     {

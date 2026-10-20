@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Scraper\ScraperGooglePlay\Api;
 
@@ -18,13 +20,13 @@ final class GooglePlayAppApi extends AbstractApi
 {
     public function execute(): GooglePlayApp
     {
-        /** @var array $content */
+        /** @var array<mixed> $content */
         $content = json_decode(substr($this->response->getContent(), 6), false);
 
-        /** @var array $content */
+        /** @var array<mixed> $content */
         $content = json_decode($content[0][2], false);
 
-        /** @var array<int, array> $app */
+        /** @var array<int, array<mixed>> $app */
         $app = $content[1][2];
 
         $a = new GooglePlayApp();
