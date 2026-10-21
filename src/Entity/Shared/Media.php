@@ -9,4 +9,6 @@ final class Media
     public string|int|null $id = null;
     public ?string $url = null;
     public ?string $metadata = null;
+    public ?Image $thumbnail = null;
+    public ?string $previewUrl = null;
 }

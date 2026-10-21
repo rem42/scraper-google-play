@@ -24,7 +24,7 @@ final class GooglePlayAppRequest extends GooglePlayRequest implements RequestQue
         return [
             'id' => $this->id,
             'hl' => $this->language,
-        ];
+        ] + $this->getCountryQuery();
     }
 
     public function setId(string $id): self

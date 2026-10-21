@@ -8,6 +8,8 @@ class Rating
 {
     public ?string $note = null;
     public ?float $noteFloat = null;
+    public ?int $count = null;
+    public ?int $reviewCount = null;
 
     /** @var array<int, RatingDistribution> */
     public array $distribution = [];

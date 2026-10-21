@@ -8,5 +8,6 @@ final class Pegi
 {
     public ?string $name = null;
     public ?string $description = null;
+    public ?string $interactiveElements = null;
     public ?Image $media = null;
 }

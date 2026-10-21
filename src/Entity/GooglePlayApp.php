@@ -6,6 +6,7 @@ namespace Scraper\ScraperGooglePlay\Entity;
 
 use Scraper\ScraperGooglePlay\Entity\Shared\Category;
 use Scraper\ScraperGooglePlay\Entity\Shared\Developer;
+use Scraper\ScraperGooglePlay\Entity\Shared\Image;
 use Scraper\ScraperGooglePlay\Entity\Shared\Pegi;
 use Scraper\ScraperGooglePlay\Entity\Shared\Permission;
 
@@ -20,9 +21,15 @@ final class GooglePlayApp extends GooglePlayObject
     /** @var array<int, Permission> */
     public array $permissions = [];
     public ?string $downloadRange = null;
+    public ?int $downloadMin = null;
     public ?int $download = null;
     public ?string $changeLog = null;
     public ?string $privacyPolicyUrl = null;
     public ?string $purchaseInApp = null;
     public ?\DateTimeInterface $firstReleaseDate = null;
+    public ?Image $headerImage = null;
+    public ?string $androidVersion = null;
+    public bool $adSupported = false;
+    public bool $preregister = false;
+    public bool $playPass = false;
 }

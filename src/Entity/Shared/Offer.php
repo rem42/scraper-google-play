@@ -11,6 +11,7 @@ class Offer
 
     public ?int $type = null;
     public ?int $price = null;
+    public ?int $originalPrice = null;
     public ?string $priceFormatted = null;
     public ?string $currency = null;
     public ?string $buyLink = null;
